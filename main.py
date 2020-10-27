@@ -50,7 +50,7 @@ def run_model():
 
 
 def main():
-    # dataset_dir = "../Dataset/RCC Portal Venous DICOMs/Corrected RCCPV Datasets/"
+    # dataset_dir = "../RCC Portal Venous DICOMs/Corrected RCCPV Datasets/"
     # generate_images_from_dcm(dataset_dir=dataset_dir)
     # dataset = load_dataset("data/dataset.npy")
     # print(type(dataset))
