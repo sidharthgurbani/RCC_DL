@@ -17,9 +17,8 @@ def run_model():
     use_gpu = torch.cuda.is_available()
     device = torch.device("cuda:0" if use_gpu else "cpu")
 
-    dataset = load_dataset("data/dataset.npy")
-    # print(dataset[:,0].shape)
-    X_train, X_test, y_train, y_test = train_test_split(dataset[:,0], dataset[:,1], test_size=0.2, random_state=42)
+    X, y = load_dataset()
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     print(X_train.shape)
     X_train = torch.from_numpy(X_train)
     y_train = torch.from_numpy(y_train)
@@ -56,20 +55,11 @@ def main():
     # generate_images_from_dcm(dataset_dir=dataset_dir)
     # dataset = load_dataset("data/dataset.npy")
     # print(type(dataset))
-    # run_model()
-    save_dataset_object("dataset.csv")
+    # X, y = load_dataset()
+    run_model()
+    # save_dataset_object("dataset.csv")
 
     return
 
 
-# import sys
-# print(sys.version)
-#
-# import numpy
-# print(numpy.__version__)
 main()
-# x = sorted(having_rt_struct_folder("../Dataset/RCC Portal Venous DICOMs/Corrected RCCPV Datasets/"))
-# df1 = pd.DataFrame(x)
-# df1.to_excel("Folders_Having_RTSTRUCT.xlsx")
-# print(x)
-# readImage()
