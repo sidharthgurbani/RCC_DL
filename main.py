@@ -8,7 +8,7 @@ import torch.optim as optim
 from torch.optim import lr_scheduler
 from torch.autograd import Variable
 
-from load_dataset import load_dataset
+from load_dataset import load_dataset, save_dataset_object
 from extract_images import generate_images_from_dcm
 from train_model import train_model
 
@@ -18,7 +18,9 @@ def run_model():
     device = torch.device("cuda:0" if use_gpu else "cpu")
 
     dataset = load_dataset("data/dataset.npy")
-    X_train, X_test, y_train, y_test = train_test_split(dataset[0], dataset[1], test_size=0.2, random_state=42)
+    # print(dataset[:,0].shape)
+    X_train, X_test, y_train, y_test = train_test_split(dataset[:,0], dataset[:,1], test_size=0.2, random_state=42)
+    print(X_train.shape)
     X_train = torch.from_numpy(X_train)
     y_train = torch.from_numpy(y_train)
     X_test = torch.from_numpy(X_test)
@@ -54,7 +56,8 @@ def main():
     # generate_images_from_dcm(dataset_dir=dataset_dir)
     # dataset = load_dataset("data/dataset.npy")
     # print(type(dataset))
-    run_model()
+    # run_model()
+    save_dataset_object("dataset.csv")
 
     return
 

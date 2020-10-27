@@ -13,7 +13,7 @@ def load_image_path_from_file(file):
 
 
 def save_dataset_object(file):
-    X, y = load_image_path_from_file("dataset.csv")
+    X, y = load_image_path_from_file(file=file)
     save_data = np.zeros([X.shape[0], 2], dtype=object)
 
     for i, x in enumerate(X):
@@ -27,12 +27,13 @@ def save_dataset_object(file):
         im = image.crop((left, top, right, bottom))
         data = np.asarray(im)
         X[i] = data
+        print(type(data))
         save_data[i, 0] = data
         save_data[i, 1] = y[i]
 
     print(type(save_data))
-    filename = "data/dataset.npy"
-    np.save(filename, save_data)
+    # filename = "data/dataset.npy"
+    # np.save(filename, save_data)
 
 
 def load_dataset(file):
