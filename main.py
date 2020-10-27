@@ -10,7 +10,7 @@ from torch.autograd import Variable
 
 from load_dataset import load_dataset
 from extract_images import generate_images_from_dcm
-from model import train_model
+from train_model import train_model
 
 
 def run_model():
